@@ -128,6 +128,18 @@
   margin-left: -0.1em;
 }
 
+.h5p-course-presentation .h5p-slidecontrols-button.h5p-slidecontrols-button-duration {
+  position: relative;
+}
+
+.h5p-course-presentation .h5p-slidecontrols-button.h5p-slidecontrols-button-duration:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f017"; /* fa-clock-o */
+  color: #292929;
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
 .h5p-course-presentation .h5p-slidecontrols-button.h5p-slidecontrols-button-background {
   position: relative;
 }

@@ -234,9 +234,12 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
   var slideFields = H5PEditor.CoursePresentation.findField('slides', this.field.fields);
   this.backgroundSelector = new H5PEditor.CoursePresentation.SlideSelector(that, that.cp.$slidesWrapper, globalBackgroundField, slideFields, that.params)
     .appendTo($settingsWrapper);
+  
+  // TODO: create something similar as above for duration
 
   // Add and bind slide controls.
   var slideControls = {
+    $duration: H5PEditor.$('<a href="#" title="' + H5PEditor.t('H5PEditor.CoursePresentation', 'duration') + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-duration"></a>'),      
     $background: H5PEditor.$('<a href="#" title="' + H5PEditor.t('H5PEditor.CoursePresentation', 'backgroundSlide') + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-background"></a>'),
     $sortLeft: H5PEditor.$('<a href="#" title="' + H5PEditor.t('H5PEditor.CoursePresentation', 'sortSlide', {':dir': 'left'}) + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-sort-left"></a>'),
     $sortRight: H5PEditor.$('<a href="#" title="' + H5PEditor.t('H5PEditor.CoursePresentation', 'sortSlide', {':dir': 'right'}) + '" class="h5p-slidecontrols-button h5p-slidecontrols-button-sort-right"></a>'),
@@ -247,6 +250,7 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
   this.slideControls = slideControls;
 
   H5PEditor.$('<div class="h5p-slidecontrols">').append([
+    slideControls.$duration,
     slideControls.$background,
     slideControls.$sortLeft,
     slideControls.$sortRight,
@@ -255,6 +259,12 @@ H5PEditor.CoursePresentation.prototype.appendTo = function ($wrapper) {
     slideControls.$add
   ]).appendTo(this.cp.$wrapper)
     .children('a:first')
+    .click(function () {
+      // TODO: action for duration selection
+
+      return false;
+    })
+    .next()
     .click(function () {
       that.backgroundSelector.toggleOpen();
       H5PEditor.$(this).toggleClass('active');
@@ -1863,6 +1873,7 @@ H5PEditor.language["H5PEditor.CoursePresentation"] = {
   "libraryStrings": {
     "confirmDeleteSlide": "Are you sure you wish to delete this slide?",
     "sortSlide": "Sort slide - :dir",
+    "duration": "Set slide duration",
     "backgroundSlide": "Set slide background",
     "removeSlide": "Remove slide",
     "cloneSlide": "Clone slide",
